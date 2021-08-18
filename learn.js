@@ -6,5 +6,5 @@ function getTodos(){
         url: 'https://jsonplaceholder.typicode.com/todos'
     })
     .then(res => console.log(res)) // returns promises
-    .catch(err => console.error); //for error handling with promises
+    .catch(err => console.error(err)); //for error handling with promises
 }
