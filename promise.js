@@ -1,20 +1,20 @@
-// let p = new Promise((resolve, reject) => { // takes one paremeter which is a function which gets passed variables of  resolve and reject
-//     // create definition of the function inside
-//     let a = 1+1
-//     if ( a == 2){
-//         resolve('Success') // if the condition is true, it is going to resolve method otherwise 
-//     }else{
-//         reject('Failed') // this reject method
-//     }
-// })
+let p = new Promise((resolve, reject) => { // takes one paremeter which is a function which gets passed variables of  resolve and reject
+    // create definition of the function inside
+    let a = 1+1
+    if ( a == 2){
+        resolve('Success') // if the condition is true, it is going to resolve method otherwise 
+    }else{
+        reject('Failed') // this reject method
+    }
+})
 
 // How we interact with promises
 
-// p.then((message) => {
-//     console.log('This is in the then' +message) //anything inside then is going to run for resolve-all it does is take a method
-// }).catch((message) => {
-//     console.log('This is in catch' +message) //catches errors which are reject state
-// }) 
+p.then((message) => {
+    console.log('This is in the then' +message) //anything inside then is going to run for resolve-all it does is take a method
+}).catch((message) => {
+    console.log('This is in catch' +message) //catches errors which are reject state
+}) 
 
 // Conclusion: then is going to be called when our promise is resolved successfully 
 //Catch is called when our promise is rejected or fails
