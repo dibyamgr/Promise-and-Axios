@@ -27,35 +27,35 @@ p.then((message) => {
 //instead of using callback inside of a callback inside of callback which is what's kmown as callback hell and its absolutely terrible
 //promises helps to solve that problem completely
 
-// const userLeft = false
-// const userWatchingCatMeme = false
+const userLeft = false
+const userWatchingCatMeme = false
 
-// function watchTutorialPromise(){
-//     return new Promise((resolve, reject) => {
-//         if (userLeft){
-//             reject({
-//                 name: 'User Left',
-//                 message:':('
-//             })
-//         }else if (userWatchingCatMeme) {
-//             reject({
-//                 name: 'User watching Cat meme',
-//                 message: 'WebDevSimplified < Cat'
-//             })
-//         }
-//         else{
-//             resolve ('Thumbs up and subscribe')
-//         }
+function watchTutorialPromise(){
+    return new Promise((resolve, reject) => {
+        if (userLeft){
+            reject({
+                name: 'User Left',
+                message:':('
+            })
+        }else if (userWatchingCatMeme) {
+            reject({
+                name: 'User watching Cat meme',
+                message: 'WebDevSimplified < Cat'
+            })
+        }
+        else{
+            resolve ('Thumbs up and subscribe')
+        }
 
-//     })
-// }
+    })
+}
 
 
-// watchTutorialPromise().then((message) => {
-//     console.log('Success' + message)
-// }).catch((error) => {
-//     console.log(error.name + ' ' + error.message)
-// })
+watchTutorialPromise().then((message) => {
+    console.log('Success' + message)
+}).catch((error) => {
+    console.log(error.name + ' ' + error.message)
+})
 
 
 // // We just have three simple promises, always gets resolved, not rejected and sends a same message
