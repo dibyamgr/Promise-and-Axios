@@ -60,22 +60,22 @@ watchTutorialPromise().then((message) => {
 
 // // We just have three simple promises, always gets resolved, not rejected and sends a same message
 
-// const recordVideoOne = new Promise((resolve, reject) => {
-//     resolve ('Video 1 recorded')
-// })
+const recordVideoOne = new Promise((resolve, reject) => {
+    resolve ('Video 1 recorded')
+})
 
-// const recordVideoTwo = new Promise((resolve, reject) => {
-//     resolve('Video two uploaded')
-// })
+const recordVideoTwo = new Promise((resolve, reject) => {
+    resolve('Video two uploaded')
+})
 
 // Promise.all is going to call each one of these promises and as soon as it is done, it is going to call .then and .catch methood 
 //pass array of different promises we wanna run 
-// Promise.all([
-//     recordVideoOne,
-//     recordVideoTwo
-// ]).then((messages) => {
-//     console.log(messages);
-// })
+Promise.all([
+    recordVideoOne,
+    recordVideoTwo
+]).then((messages) => {
+    console.log(messages);
+})
 
 
 // Promise.race similar like promise.all - 
