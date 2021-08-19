@@ -27,7 +27,7 @@ function addTodo() {
   .catch((err) => console.error(err));
 }
 
-// PUT/PATCH REQUEST
+// PUT/PATCH REQUEST - put replaces the data where patch modifies only the given data
 function updateTodo() {
   axios
   .patch("https://jsonplaceholder.typicode.com/todos/1", {
@@ -40,12 +40,20 @@ function updateTodo() {
 
 // DELETE REQUEST
 function removeTodo() {
-  console.log("DELETE Request");
+  axios
+  .delete("https://jsonplaceholder.typicode.com/todos/1")
+  .then((res) => showOutput(res))
+  .catch((err) => console.error(err));
 }
 
-// SIMULTANEOUS DATA
+// SIMULTANEOUS DATA- takes arrays of requests
 function getData() {
-  console.log("Simultaneous Request");
+  axios.all([
+    axios.get('https://jsonplaceholder.typicode.com/todos'),
+    axios.get('https://jsonplaceholder.typicode.com/posts?_limit=5'),
+  ])
+  .then(axios.spread((todos, posts) => showOutput(posts))) //axios.spread- more descriptive variable names, takes a fucntion
+  .catch((err) => console.error(err));
 }
 
 // CUSTOM HEADERS
