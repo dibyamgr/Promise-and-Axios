@@ -28,15 +28,15 @@ function addTodo() {
 }
 
 // PUT/PATCH REQUEST
-// function updateTodo() {
-//   axios
-//   .patch("https://jsonplaceholder.typicode.com/todos/1", {
-//     title: 'Updated Todo',
-//     completed: true
-//   })
-//   .then((res) => showOutput(res))
-//   .catch((err) => console.error(err));
-// }
+function updateTodo() {
+  axios
+  .patch("https://jsonplaceholder.typicode.com/todos/1", {
+    title: 'Updated Todo',
+    completed: true
+  })
+  .then((res) => showOutput(res))
+  .catch((err) => console.error(err));
+}
 
 // DELETE REQUEST
 function removeTodo() {
