@@ -76,7 +76,13 @@ function cancelToken() {
   console.log("Cancel Token");
 }
 
-// INTERCEPTING REQUESTS & RESPONSES
+// INTERCEPTING REQUESTS & RESPONSES- this takes a function with congig as a paremeter.
+axios.interceptors.request.use(config => {
+  console.log(`${config.method.toUpperCase()} request sent to ${config.url} at ${new Date().getTime()}`);
+  return config
+}, error => {
+  return Promise.reject(error);
+});
 
 // AXIOS INSTANCES
 
