@@ -15,7 +15,7 @@ function getTodos() {
   // .catch(err => console.log(error(err)));
 
   axios
-    .get("https://jsonplaceholder.typicode.com/todos?_limit=5")
+    .get("https://jsonplaceholder.typicode.com/todos?_limit=5", { timeOut: 5000})
     .then((res) => showOutput(res))
     .catch((err) => console.error(err));
 }
@@ -98,13 +98,53 @@ function transformResponse() {
 
 // ERROR HANDLING
 function errorHandling() {
-  console.log("Error Handling");
+  axios
+  .get("https://jsonplaceholder.typicode.com/todoss", {
+    // validateStatus: function(status){
+    //   return status < 500 ; // Reject only if status is greater or equal to 500
+    // }
+  })
+  .then((res) => showOutput(res))
+  .catch((err) => {
+    if (err.response) {
+      //Server responded with a status 200
+      console.log(err.response.data);
+      console.log(err.response.status);
+      console.log(err.response.headers);
+
+
+      if(err.response.status === 404){
+        alert('Error Page Not found');
+      }
+    }else if (err.request) {
+      //Request was made but there is no response
+      console.error(err.request);
+    }else{
+      console.error(err.request);
+    }
+  });
 }
 
 // CANCEL TOKEN
 function cancelToken() {
-  console.log("Cancel Token");
+  const source = axios.CancelToken.source();
+
+  axios
+    .get("https://jsonplaceholder.typicode.com/todos",{
+      cancelToken: source.token
+    })
+    .then((res) => showOutput(res))
+    .catch(thrown => {
+      if(axios.isCancel(thrown)){
+        console.log('Request Cancelled', thrown.message)
+      }
+    });
+
+    if(true){
+      source.cancel('Request Canceled!!');
+    }
 }
+
 
 // INTERCEPTING REQUESTS & RESPONSES- this takes a function with congig as a paremeter.
 axios.interceptors.request.use(config => {
@@ -115,6 +155,13 @@ axios.interceptors.request.use(config => {
 });
 
 // AXIOS INSTANCES
+const axiosInstance = axios.create({
+  //other custom settings
+  baseURL: 'https://jsonplaceholder.typicode.com'
+});
+
+// axiosInstance.get('/comments').then(res => showOutput(res));
+
 
 // Show output in browser
 function showOutput(res) {
