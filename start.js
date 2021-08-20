@@ -45,7 +45,7 @@ function updateTodo() {
 // DELETE REQUEST
 function removeTodo() {
   axios
-  .delete("https://jsonplaceholder.typicode.com/todos/1")
+  .delete("https://jsonplaceholder.typicode.com/todos/2")
   .then((res) => showOutput(res))
   .catch((err) => console.error(err));
 }
